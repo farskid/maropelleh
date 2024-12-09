@@ -4,14 +4,22 @@
 
 :root {
   --ladder-color: rgba(32, 167, 50, 0.5);
-  --snake-color: rgb(151, 46, 46);
-  --player-1-color: blue;
-  --player-2-color: purple;
+  --snake-color: rgb(211, 115, 115);
+  --player-1-color: rgb(53, 53, 150);
+  --player-2-color: rgb(152, 51, 152);
   --checker-size: 3rem;
 }
 
 body {
   margin: 0;
+}
+
+button {
+  display: block;
+  width: 5rem;
+  height: 2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .game {
@@ -31,11 +39,16 @@ body {
 
 .game-info {
   width: 20%;
-  /* background-color: color-mix(in srgb, var(--bg) 90%, white); */
   padding: 1rem;
   aspect-ratio: 1;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.game-actions {
+  display: flex;
+  gap: 1rem;
 }
 
 .player-turns,
@@ -50,11 +63,11 @@ body {
   flex-basis: 50%;
 }
 
-.player-turns > div {
+.player-turns [data-player-id] {
   display: grid;
   place-items: center;
   font-weight: bold;
-  background-color: color-mix(in srgb, var(--bg) 50%, white);
+  color: color-mix(in srgb, var(--color) 30%, white);
 }
 
 .player-turns [data-player-id="1"][data-active="true"] {
@@ -102,7 +115,7 @@ body {
 .cell-value {
   position: absolute;
   font-size: 2em;
-  color: color-mix(in srgb, var(--bg) 50%, white);
+  color: color-mix(in srgb, var(--color) 50%, white);
   font-weight: bold;
 }
 
@@ -145,17 +158,13 @@ body {
   border: 1px solid var(--snake-color);
 }
 
-@media (prefers-color-scheme: light) {
-  /* :root {
-    --ladder-color: #000;
-  } */
-}
-
 .checker {
   width: var(--checker-size);
   height: var(--checker-size);
   border-radius: 50%;
   z-index: 2;
+  transition: 0.2s ease-in-out;
+  will-change: left, top;
 }
 .checker.onboard {
   position: absolute;
@@ -171,5 +180,9 @@ body {
 }
 
 .player-positions {
-  height: var(--checker-size);
+  height: calc(var(--checker-size) * 1.2);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
 }

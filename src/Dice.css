@@ -1,5 +1,5 @@
 .dice {
-  --dice-color: rgba(255, 255, 255, 0.8);
+  --dice-color: var(--color);
   position: relative;
   border: 2px solid var(--dice-color);
   border-radius: 0.5rem;

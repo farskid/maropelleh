@@ -1,4 +1,4 @@
-import { useCallback, useRef, useSyncExternalStore } from "react";
+import { useCallback, useMemo, useRef, useSyncExternalStore } from "react";
 import { Game, GameEvent } from "./Game";
 
 export function useGame() {
@@ -8,13 +8,22 @@ export function useGame() {
     gameRef.current.getSnapshot.bind(gameRef.current)
   );
 
+  const memoState = useMemo(
+    () =>
+      ({
+        ...state,
+        winner: gameRef.current.getWinner(),
+      } as const),
+    [state]
+  );
+
   const stableSend = useCallback(
     (event: GameEvent) => gameRef.current.send(event),
     []
   );
 
   return {
-    state,
+    state: memoState,
     send: stableSend,
   };
 }

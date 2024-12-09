@@ -147,7 +147,7 @@ function App() {
           )}
           {state.rolledDice > 0 && <Dice value={state.rolledDice} />}
         </div>
-        {state.status}
+        {state.status === "finished" && <p>Player {state.winner} won!</p>}
       </div>
       <div className="board">
         <div className="snakes">

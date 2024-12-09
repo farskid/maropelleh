@@ -26,6 +26,16 @@ export class Game {
   };
   private listeners: Listener[] = [];
 
+  getWinner() {
+    if (this.state.p1Pos === 100) {
+      return 1;
+    }
+    if (this.state.p2Pos === 100) {
+      return 2;
+    }
+    return null;
+  }
+
   private rollAndMove() {
     // this.state.status = "rolling";
     const diceValue = Math.floor(Math.random() * 6) + 1;
