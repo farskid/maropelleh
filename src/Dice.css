@@ -1,0 +1,118 @@
+.dice {
+  --dice-color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  border: 2px solid var(--dice-color);
+  border-radius: 0.5rem;
+  width: 50px;
+  height: 50px;
+}
+
+.dice-circle {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background-color: var(--dice-color);
+}
+
+/* 1 */
+.dice[data-value="1"] .dice-circle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 2 */
+.dice[data-value="2"] .dice-circle:nth-child(1) {
+  top: 10%;
+  right: 10%;
+}
+.dice[data-value="2"] .dice-circle:nth-child(2) {
+  bottom: 10%;
+  left: 10%;
+}
+
+/* 3 */
+.dice[data-value="3"] .dice-circle:nth-child(1) {
+  top: 10%;
+  right: 10%;
+}
+.dice[data-value="3"] .dice-circle:nth-child(2) {
+  bottom: 10%;
+  left: 10%;
+}
+.dice[data-value="3"] .dice-circle:nth-child(3) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 4 */
+.dice[data-value="4"] .dice-circle:nth-child(1) {
+  top: 10%;
+  right: 10%;
+}
+.dice[data-value="4"] .dice-circle:nth-child(2) {
+  bottom: 10%;
+  left: 10%;
+}
+.dice[data-value="4"] .dice-circle:nth-child(3) {
+  top: 10%;
+  left: 10%;
+}
+.dice[data-value="4"] .dice-circle:nth-child(4) {
+  bottom: 10%;
+  right: 10%;
+}
+
+/* 5 */
+.dice[data-value="5"] .dice-circle:nth-child(1) {
+  top: 10%;
+  right: 10%;
+}
+.dice[data-value="5"] .dice-circle:nth-child(2) {
+  bottom: 10%;
+  left: 10%;
+}
+.dice[data-value="5"] .dice-circle:nth-child(3) {
+  top: 10%;
+  left: 10%;
+}
+.dice[data-value="5"] .dice-circle:nth-child(4) {
+  bottom: 10%;
+  right: 10%;
+}
+.dice[data-value="5"] .dice-circle:nth-child(5) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 6 */
+.dice[data-value="6"] .dice-circle:nth-child(1) {
+  top: 10%;
+  left: 10%;
+}
+.dice[data-value="6"] .dice-circle:nth-child(2) {
+  top: 50%;
+  left: 10%;
+  transform: translate(0, -50%);
+}
+.dice[data-value="6"] .dice-circle:nth-child(3) {
+  bottom: 10%;
+  left: 10%;
+}
+.dice[data-value="6"] .dice-circle:nth-child(4) {
+  top: 10%;
+  right: 10%;
+}
+.dice[data-value="6"] .dice-circle:nth-child(5) {
+  top: 50%;
+  right: 10%;
+  transform: translate(0, -50%);
+}
+
+.dice[data-value="6"] .dice-circle:nth-child(6) {
+  bottom: 10%;
+  right: 10%;
+}

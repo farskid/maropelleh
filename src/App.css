@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --ladder-color: rgba(32, 167, 50, 0.5);
+  --snake-color: rgb(151, 46, 46);
+  --player-1-color: blue;
+  --player-2-color: purple;
+  --checker-size: 3rem;
+}
+
+body {
+  margin: 0;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+}
+
+.board {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  padding: 1rem;
+}
+
+.game-info {
+  width: 20%;
+  /* background-color: color-mix(in srgb, var(--bg) 90%, white); */
+  padding: 1rem;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-turns,
+.player-positions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.player-turns {
+  flex-basis: 50%;
+}
+
+.player-turns > div {
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  background-color: color-mix(in srgb, var(--bg) 50%, white);
+}
+
+.player-turns [data-player-id="1"][data-active="true"] {
+  background-color: var(--player-1-color);
+}
+
+.player-turns [data-player-id="2"][data-active="true"] {
+  background-color: var(--player-2-color);
+}
+
+.cells {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cell {
+  border: 1px solid color-mix(in srgb, var(--bg) 50%, black);
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+}
+
+/* .cell[data-connects-ladder="true"],
+.cell:has(.cell-triangle) {
+  background-color: color-mix(in srgb, var(--bg) 50%, transparent);
+} */
+
+.cell-triangle {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 1rem solid var(--snake-color);
+  transform-origin: center;
+  z-index: 1;
+}
+
+.cell-value {
+  position: absolute;
+  font-size: 2em;
+  color: color-mix(in srgb, var(--bg) 50%, white);
+  font-weight: bold;
+}
+
+/* .cell-value[data-value="1"],
+.cell-value[data-value="100"] {
+  font-size: 2em;
+} */
+
+.ladders,
+.snakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.snake,
+.ladder {
+  position: absolute;
+}
+
+.ladder {
+  transform-origin: center left;
+  border-color: var(--ladder-color);
+  border-width: 1px;
+  border-style: solid;
+  background-image: linear-gradient(
+    to right,
+    var(--ladder-color) 2px,
+    transparent 10px
+  );
+  background-repeat: repeat;
+  background-size: 20px 20px;
+}
+
+.snake {
+  transform-origin: center left;
+  border: 1px solid var(--snake-color);
+}
+
+@media (prefers-color-scheme: light) {
+  /* :root {
+    --ladder-color: #000;
+  } */
+}
+
+.checker {
+  width: var(--checker-size);
+  height: var(--checker-size);
+  border-radius: 50%;
+  z-index: 2;
+}
+.checker.onboard {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.checker[data-player-id="1"] {
+  background-color: var(--player-1-color);
+}
+
+.checker[data-player-id="2"] {
+  background-color: var(--player-2-color);
+}
+
+.player-positions {
+  height: var(--checker-size);
+}
