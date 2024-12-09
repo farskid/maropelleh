@@ -1,6 +1,6 @@
 # Snakes and Ladders
 
-<img src="https://github.com/farskid/maropelleh/public/poster.png" alt="Snakes and Ladders" />
+<img src="https://github.com/farskid/maropelleh/blob/main/public/poster.png" width="200" height="200" />
 
 ## TODO
 
